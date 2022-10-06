@@ -74,16 +74,16 @@ int key_length(char s[])
 
 int duplicates(char s[])
 {       
-    int count = 0;
-    for(int i = 0; i < strlen(s); i++)
+    for (int i = 0; i < strlen(s); i++)
     {
-        count += toupper(s[i]);
-    }
-
-    if (count != 2015)
+        for (int j = 0; j < strlen(s); j++)
         {
-            return 0;
+            if ( (s[i] == s[j]) && (i != j) )
+            {
+                return 0;
+            }
         }
+    }
     return 1;
 }
 
@@ -92,7 +92,6 @@ char map(char c, char s[])
         if (islower(c))
         {
             c = (int) c - 'a';
-            
             return tolower(s[c]);
         }
         else if (isupper(c))
@@ -106,6 +105,23 @@ char map(char c, char s[])
         }
 }
 
-// ABCDEFGHIJKLMNOPQRSTUVWXYZ
-// abcdefghijklmnopqrstuvwxyz
-// VcHpRzGjNtLsKfBdQwAxEuYmOi
+// :) encrypts "A" as "Z" using ZYXWVUTSRQPONMLKJIHGFEDCBA as key
+// :) encrypts "a" as "z" using ZYXWVUTSRQPONMLKJIHGFEDCBA as key
+// :) encrypts "ABC" as "NJQ" using NJQSUYBRXMOPFTHZVAWCGILKED as key
+// :) encrypts "XyZ" as "KeD" using NJQSUYBRXMOPFTHZVAWCGILKED as key
+// :) encrypts "This is CS50" as "Cbah ah KH50" using YUKFRNLBAVMWZTEOGXHCIPJSQD as key
+// :) encrypts "This is CS50" as "Cbah ah KH50" using yukfrnlbavmwzteogxhcipjsqd as key
+// :) encrypts "This is CS50" as "Cbah ah KH50" using YUKFRNLBAVMWZteogxhcipjsqd as key
+// :) encrypts all alphabetic characters using DWUSXNPQKEGCZFJBTLYROHIAVM as key
+// sending input The quick brown fox jumps over the lazy dog...
+// checking for output "ciphertext: Rqx tokug wljif nja eozby jhxl rqx cdmv sjp\n"...
+// :) does not encrypt non-alphabetical characters using DWUSXNPQKEGCZFJBTLYROHIAVM as key
+// sending input Shh... Don't tell!...
+// checking for output "ciphertext: Yqq... Sjf'r rxcc!\n"...
+// :) handles lack of key "./substitution"
+// :) handles too many arguments "./substitution abcdefghijklmnopqrstuvwxyz abc"
+// :) handles invalid key length "./substitution QTXDGMKIPV"
+// :) handles invalid characters in key ./substitution ZWGKPMJ^YISHFEXQON[DLUACVT"
+// :) handles duplicate characters in uppercase key "./substitution FAZRDTMGQEJPWAXUSKVIYCLONH"
+// :) handles duplicate characters in lowercase key "./substitution fazrdtmgqejpwaxuskviyclonh"
+// :) handles multiple duplicate characters in key "./substitution MMCcEFGHIJKLMNOPqRqTUVWXeZ"
