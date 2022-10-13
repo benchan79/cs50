@@ -1,0 +1,65 @@
+sort1 uses: Bubble sort
+
+How do you know?: The execution time on a random or reversed list increased exponentially as n increased.
+That's because the upper bound of the bubble sort algorithm is Big O(n squared).
+However the execution time on a sorted list is much faster than a random or reversed list,
+and it is also the fastest of the 3 sorting algorithms. 
+This is because the lower bound is in the order of Omega(n).
+
+sort2 uses: Merge Sort
+
+How do you know?: The execution time is the fastest of the 3 for a random list, and the running time 
+only increased in the order of (n log n), as n increased. 
+This is explained by the upper bound of Merge Sort which is in the order of just O(n log n),
+compared to the other 2 algorithm's Big O(n squared). 
+The execution time for a sorted list is the about the same as that of a random list. 
+This is also explained by the Merge sort's lower bound of Omega(n log n) too.
+
+sort3 uses: Selection sort
+
+How do you know?: The execution time on a random or reversed list increased exponentially as n increased.
+This is characteristic of the upper bound of a selection sort which is Big O(n squared).
+A similar exponential increase in running is seen on a sorted list.
+This is another characteristic of the lower bound of a selection sort which is also Big Omega(n squared).
+
+
+------------------------------------
+sort1
+random5000.txt:     real    0m0.088s
+random10000.txt:    real    0m0.326s
+random50000.txt:    real    0m8.284s
+
+reversed5000.txt:   real    0m0.085s
+reversed10000.txt:  real    0m0.270s
+reversed50000.txt   real    0m6.717s
+
+sorted5000.txt:   real    0m0.019s
+sorted10000.txt:  real    0m0.049s
+sorted50000.txt   real    0m0.495s
+------------------------------------
+sort2
+random5000.txt:     real    0m0.021s
+random10000.txt:    real    0m0.041s
+random50000.txt:    real    0m0.421s
+
+reversed5000.txt:   real    0m0.027s
+reversed10000.txt:  real    0m0.059s
+reversed50000.txt   real    0m0.454s
+
+sorted5000.txt:   real    0m0.038s
+sorted10000.txt:  real    0m0.052s
+sorted50000.txt   real    0m0.554s
+------------------------------------
+sort3
+random5000.txt:     real    0m0.057s
+random10000.txt:    real    0m0.218s
+random50000.txt:    real    0m3.441s
+
+reversed5000.txt:   real    0m0.052s
+reversed10000.txt:  real    0m0.157s
+reversed50000.txt   real    0m3.596s
+
+sorted5000.txt:   real    0m0.053s
+sorted10000.txt:  real    0m0.162s
+sorted50000.txt   real    0m3.511s
+------------------------------------
